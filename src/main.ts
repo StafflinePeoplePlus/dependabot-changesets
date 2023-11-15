@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import { exec } from '@actions/exec';
 import {
+	PackageUpdate,
 	extractChangesetUpdate,
 	extractUpdates,
 	generateChangeset,
@@ -31,11 +32,16 @@ export async function run(): Promise<void> {
 		}
 		core.debug(`Found PR: '${pr.data.title}'`);
 
-		if (!isGroupedPR(pr.data.title)) {
-			throw new Error('Only grouped dependabot PRs are currently supported.');
+		let updates: PackageUpdate[] = [];
+		if (isGroupedPR(pr.data.title)) {
+			updates = extractUpdates(pr.data.body ?? '');
+		} else {
+			const update = extractChangesetUpdate(pr.data.title);
+			if (update) {
+				updates = [update];
+			}
 		}
 
-		const updates = extractUpdates(pr.data.body ?? '');
 		core.debug(`Found updates: ${JSON.stringify(updates, null, 4)}`);
 		if (updates.length === 0) {
 			throw new Error('no dependency updates found in PR');
@@ -56,7 +62,8 @@ export async function run(): Promise<void> {
 			core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
 		}
 
-		await exec("git commit -am 'add changeset for dependecy updates'");
+		await exec('git add .changeset/*');
+		await exec("git commit -m 'add changeset for dependecy updates'");
 		await exec('git push');
 	} catch (error) {
 		// Fail the workflow run if an error occurs

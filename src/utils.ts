@@ -19,6 +19,11 @@ export function extractUpdates(body: string): PackageUpdate[] {
 	return updates;
 }
 
+export function extractUpdateFromTitle(title: string): PackageUpdate | undefined {
+	// They end up being the same thing!
+	return extractChangesetUpdate(title);
+}
+
 export function getChangesetName(pkg: string) {
 	const name = pkg.replace(/\//g, '__');
 	return `${name}.md`;
