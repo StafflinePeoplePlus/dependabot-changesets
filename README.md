@@ -7,7 +7,7 @@ GitHub action to generate changesets for your dependency updates made via depend
 
 ## Example workflow
 
-This workflow will automatically run the action on PRs made with the `dependencies`` label, the label
+This workflow will automatically run the action on PRs made with the `dependencies` label, the label
 used by dependabot. It will find the updates made and then commit the changesets to the PR that
 triggered the action.
 
