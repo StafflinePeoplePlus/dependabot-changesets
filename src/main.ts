@@ -69,7 +69,7 @@ export async function run(): Promise<void> {
 		await exec('git', ['config', '--global', 'user.name', gitUser]);
 		await exec('git', ['config', '--global', 'user.email', gitEmail]);
 		await exec('git add .changeset/*');
-		await exec('git', ['commit', '-m', 'add changeset for dependecy updates']);
+		await exec('git', ['commit', '-m', 'add changeset for dependency updates']);
 		await exec('git push');
 	} catch (error) {
 		// Fail the workflow run if an error occurs

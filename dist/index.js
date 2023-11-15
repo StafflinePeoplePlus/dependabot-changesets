@@ -29789,7 +29789,7 @@ async function run() {
         await (0, exec_1.exec)('git', ['config', '--global', 'user.name', gitUser]);
         await (0, exec_1.exec)('git', ['config', '--global', 'user.email', gitEmail]);
         await (0, exec_1.exec)('git add .changeset/*');
-        await (0, exec_1.exec)('git', ['commit', '-m', 'add changeset for dependecy updates']);
+        await (0, exec_1.exec)('git', ['commit', '-m', 'add changeset for dependency updates']);
         await (0, exec_1.exec)('git push');
     }
     catch (error) {
