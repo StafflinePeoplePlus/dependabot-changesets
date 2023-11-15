@@ -29745,10 +29745,13 @@ async function run() {
     try {
         const owner = core.getInput('owner', { required: true });
         const repo = core.getInput('repo', { required: true });
-        const prNumber = core.getInput('prNumber', { required: true });
+        const prNumber = core.getInput('pr-number', { required: true });
         const token = core.getInput('token', { required: true });
-        const packageName = core.getInput('packageName', { required: false }) ?? repo;
-        const updateType = core.getInput('updateType', { required: false }) ?? 'patch';
+        const packageName = core.getInput('package-name', { required: false }) ?? repo;
+        const updateType = core.getInput('update-type', { required: false }) ?? 'patch';
+        const gitUser = core.getInput('git-user', { required: false }) ?? 'github-actions[bot]';
+        const gitEmail = core.getInput('git-email', { required: false }) ??
+            '41898282+github-actions[bot]@users.noreply.github.com';
         const octokit = github.getOctokit(token);
         const pr = await octokit.rest.pulls.get({ owner, repo, pull_number: Number(prNumber) });
         if (pr.status !== 200) {
@@ -29783,6 +29786,8 @@ async function run() {
             await (0, promises_1.writeFile)(changesetPath, (0, utils_1.generateChangeset)(packageName, updateType, update), 'utf-8');
             core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
         }
+        await (0, exec_1.exec)('git', ['config', '--global', 'user.name', gitUser]);
+        await (0, exec_1.exec)('git', ['config', '--global', 'user.email', gitEmail]);
         await (0, exec_1.exec)('git add .changeset/*');
         await (0, exec_1.exec)('git', ['commit', '-m', 'add changeset for dependecy updates']);
         await (0, exec_1.exec)('git push');

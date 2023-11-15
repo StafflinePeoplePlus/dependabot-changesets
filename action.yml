@@ -15,19 +15,27 @@ inputs:
   repo:
     description: 'The name of the repository'
     required: true
-  prNumber:
+  pr-number:
     description: 'The number of the pull request'
     required: true
   token:
     description: 'The token to use to access the GitHub API'
     required: true
-  packageName:
+  package-name:
     description: 'Name of the package to generate the changeset for, defaults to the repo name'
     required: false
-  updateType:
+  update-type:
     description: 'Type of update to generate the changeset for, defaults to "patch"'
     required: false
     default: patch
+  git-user:
+    description: 'Username to use for git commits, defaults to "github-actions[bot]"'
+    required: false
+    default: github-actions[bot]
+  git-email:
+    description: 'Email to use for git commits, defaults to "41898282+github-actions[bot]@users.noreply.github.com"'
+    required: false
+    default: 41898282+github-actions[bot]@users.noreply.github.com
 
 runs:
   using: node20
