@@ -1,0 +1,403 @@
+Bumps the all group with 9 updates:
+
+| Package | From | To |
+| --- | --- | --- |
+| [@auth/sveltekit](https://github.com/nextauthjs/next-auth) | `0.3.11` | `0.3.12` |
+| [@sveltejs/kit](https://github.com/sveltejs/kit/tree/HEAD/packages/kit) | `1.27.4` | `1.27.6` |
+| [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) | `6.10.0` | `6.11.0` |
+| [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) | `6.10.0` | `6.11.0` |
+| [marked-gfm-heading-id](https://github.com/markedjs/marked-gfm-heading-id) | `3.1.0` | `3.1.1` |
+| [prettier](https://github.com/prettier/prettier) | `3.0.3` | `3.1.0` |
+| [prettier-plugin-svelte](https://github.com/sveltejs/prettier-plugin-svelte) | `3.0.3` | `3.1.0` |
+| [svelte-check](https://github.com/sveltejs/language-tools) | `3.5.2` | `3.6.0` |
+| [sveltekit-superforms](https://github.com/ciscoheat/sveltekit-superforms) | `1.10.1` | `1.10.2` |
+
+Updates `@auth/sveltekit` from 0.3.11 to 0.3.12
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/nextauthjs/next-auth/releases"><code>@​auth/sveltekit</code>'s releases</a>.</em></p>
+<blockquote>
+<h2><code>@​auth/sveltekit</code><a href="https://github.com/0"><code>@​0</code></a>.3.12</h2>
+<h2>Other</h2>
+<ul>
+<li><strong><code>@​auth/core</code></strong>: cookies cleanup (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9111">#9111</a>) (ee88375f)</li>
+<li><strong><code>@​auth/core</code></strong>: typo in apple.ts (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9093">#9093</a>) (419b66d0)</li>
+<li><strong><code>@​auth/core</code></strong>: Update GoogleProfile interface (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9065">#9065</a>) (978ff5e0)</li>
+<li><strong><code>@​auth/core</code></strong>: correct import (528f266a)</li>
+<li><strong><code>@​auth/core</code></strong>: Update credentials docs (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9008">#9008</a>) (9af3f94c)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/4ba6dc478ead11411299eac364546e5b41951442"><code>4ba6dc4</code></a> chore(release): bump package version(s) [skip ci]</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/c9ab237a5aad1ebbab2988a3805e480d2e1969e9"><code>c9ab237</code></a> chore: allow branch release</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/762570b82f1c9612c31562bc30db9eec3debc042"><code>762570b</code></a> fix: correct <code>@auth/core</code> dependency</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/772b5824e793ab09b0443062e001ad79f3a9e1d5"><code>772b582</code></a> Merge branch 'main' of github.com:nextauthjs/next-auth</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/234f127a498967b2983e90ff0b09c0f40534406c"><code>234f127</code></a> chore: temporarily skip some tests</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/87670000917a04b1d22191b4aa07c391fe910c5d"><code>8767000</code></a> fix(docs): invalid link correction (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9112">#9112</a>)</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/53fe19b298c1588d4b8a6ed9cd88d149a7c0f0fe"><code>53fe19b</code></a> Merge branch 'main' of github.com:nextauthjs/next-auth</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/a067509fdb8158235785e0d2e597da914d7dd3ba"><code>a067509</code></a> chore: temporarily disable auto-release of <code>next-auth</code></li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/ee88375fc3960cc219a1d958c3ad519d143fba40"><code>ee88375</code></a> fix: cookies cleanup (<a href="https://redirect.github.com/nextauthjs/next-auth/issues/9111">#9111</a>)</li>
+<li><a href="https://github.com/nextauthjs/next-auth/commit/7433e1d9a67686dd02bb7f900e6b25cde0abdaac"><code>7433e1d</code></a> docs: drop irrelevant sections</li>
+<li>Additional commits viewable in <a href="https://github.com/nextauthjs/next-auth/compare/@auth/sveltekit@0.3.11...@auth/sveltekit@0.3.12">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `@sveltejs/kit` from 1.27.4 to 1.27.6
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/kit/releases"><code>@​sveltejs/kit</code>'s releases</a>.</em></p>
+<blockquote>
+<h2><code>@​sveltejs/kit</code><a href="https://github.com/1"><code>@​1</code></a>.27.6</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p>fix: use runes in generated root when detecting Svelte 5 (<a href="https://redirect.github.com/sveltejs/kit/pull/11028">#11028</a>)</p>
+</li>
+<li>
+<p>fix: correctly prerender pages that use browser globals and have SSR turned off (<a href="https://redirect.github.com/sveltejs/kit/pull/11032">#11032</a>)</p>
+</li>
+<li>
+<p>fix: correctly show 404 for prerendered dynamic routes when navigating client-side without a root layout server load (<a href="https://redirect.github.com/sveltejs/kit/pull/11025">#11025</a>)</p>
+</li>
+</ul>
+<h2><code>@​sveltejs/kit</code><a href="https://github.com/1"><code>@​1</code></a>.27.5</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p>fix: add vite.config.js to included files in generated tsconfig (<a href="https://redirect.github.com/sveltejs/kit/pull/10788">#10788</a>)</p>
+</li>
+<li>
+<p>fix: cache location.origin on startup (<a href="https://redirect.github.com/sveltejs/kit/pull/11004">#11004</a>)</p>
+</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/kit/blob/master/packages/kit/CHANGELOG.md"><code>@​sveltejs/kit</code>'s changelog</a>.</em></p>
+<blockquote>
+<h2>1.27.6</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p>fix: use runes in generated root when detecting Svelte 5 (<a href="https://redirect.github.com/sveltejs/kit/pull/11028">#11028</a>)</p>
+</li>
+<li>
+<p>fix: correctly prerender pages that use browser globals and have SSR turned off (<a href="https://redirect.github.com/sveltejs/kit/pull/11032">#11032</a>)</p>
+</li>
+<li>
+<p>fix: correctly show 404 for prerendered dynamic routes when navigating client-side without a root layout server load (<a href="https://redirect.github.com/sveltejs/kit/pull/11025">#11025</a>)</p>
+</li>
+</ul>
+<h2>1.27.5</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p>fix: add vite.config.js to included files in generated tsconfig (<a href="https://redirect.github.com/sveltejs/kit/pull/10788">#10788</a>)</p>
+</li>
+<li>
+<p>fix: cache location.origin on startup (<a href="https://redirect.github.com/sveltejs/kit/pull/11004">#11004</a>)</p>
+</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/sveltejs/kit/commit/f9324a03705c5495362ecc67d58a5066bf495dcb"><code>f9324a0</code></a> Version Packages (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11034">#11034</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/127bdea56fd87e3a5ec6ee09b93e702e9a203791"><code>127bdea</code></a> fix: correctly configure <code>module</code> and <code>noEmit</code> tsconfig and jsconfig properti...</li>
+<li><a href="https://github.com/sveltejs/kit/commit/4d15da102143c89664130bdaa39c4f24517b4cf8"><code>4d15da1</code></a> fix: prevent JSON parse error when loading data (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11025">#11025</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/0554fecf3a6a53f8f38cacc3702b01eeb405a40f"><code>0554fec</code></a> fix: use runes in when detecting Svelte 5 (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11028">#11028</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/aeaf164064ddffcff18132fa85f58f2a94ffaa80"><code>aeaf164</code></a> fix: check ssr option when doing final response render (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11032">#11032</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/cbd60cc3c787574d60bea5aa3a3119121c6d53e0"><code>cbd60cc</code></a> feat: upgrade to prettier 3 and prettier-plugin-svelte 3 (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/10410">#10410</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/977b151b776a61c1ab7fe3c3ac573b98c0e7e2d5"><code>977b151</code></a> feat: add option to try out Svelte 5 beta (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11026">#11026</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/9057ac1496bccbca5790e24dfd1e3c3f24555d63"><code>9057ac1</code></a> chore(deps): update dependency marked to v10 (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11012">#11012</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/ff25acb9ede14fab6ab54a719b7f0bfcb80b0f2c"><code>ff25acb</code></a> Version Packages (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/11005">#11005</a>)</li>
+<li><a href="https://github.com/sveltejs/kit/commit/c52aab6e8932420dff6671dc1028fadb8647c24a"><code>c52aab6</code></a> feat: image preprocessor (<a href="https://github.com/sveltejs/kit/tree/HEAD/packages/kit/issues/10788">#10788</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/sveltejs/kit/commits/@sveltejs/kit@1.27.6/packages/kit">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `@typescript-eslint/eslint-plugin` from 6.10.0 to 6.11.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/typescript-eslint/typescript-eslint/releases"><code>@​typescript-eslint/eslint-plugin</code>'s releases</a>.</em></p>
+<blockquote>
+<h2>v6.11.0</h2>
+<h1><a href="https://github.com/typescript-eslint/typescript-eslint/compare/v6.10.0...v6.11.0">6.11.0</a> (2023-11-13)</h1>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>eslint-plugin:</strong> [explicit-function-return-type] support JSX attributes in <code>allowTypedFunctionExpressions</code> (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7553">#7553</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/be2777c5338669836d786f9a7806f499fd566dcd">be2777c</a>)</li>
+<li><strong>eslint-plugin:</strong> [no-unnecessary-qualifier] handle nested namespace id (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7883">#7883</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/a668f5b10e7b1570c732312ad9ccab3431459c1b">a668f5b</a>)</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li>add <code>no-unsafe-unary-minus</code> rule (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7390">#7390</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/c4709c2861f8ea4e18c289218a75224d6bb76193">c4709c2</a>)</li>
+<li>add types for flat config files (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7273">#7273</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/66cd0c0535e5de1b46ba337919a9a92748d2b0a6">66cd0c0</a>)</li>
+<li>allow typescript <code>5.3.0-beta</code> as <code>devDependency</code> (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7821">#7821</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/b6c40b42b68d5567c7468030ee45b9b84bec4c4d">b6c40b4</a>)</li>
+<li><strong>eslint-plugin:</strong> no-unsafe-enum-comparison handles switch cases (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7898">#7898</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/72cb9e4ed397d35a8d8838d27dedbace6122179c">72cb9e4</a>)</li>
+<li><strong>typescript-estree:</strong> skip <code>isTTY</code> version check if user passes <code>loggerFn</code> on unsupported TypeScript version warning (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7739">#7739</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/9656e135e78d9346d326d0c78ba772a5596c1812">9656e13</a>)</li>
+<li><strong>utils:</strong> add ESLint <code>CodePath</code> selector types (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7551">#7551</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/99a026fe41b4b169914352fe66e7d5d687b300bf">99a026f</a>)</li>
+<li><strong>utils:</strong> update types to reflect <code>RuleContext</code> and <code>SourceCode</code> changes and deprecations (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7812">#7812</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/b73d8b21dea9c6697a68039ffba848d21b04402c">b73d8b2</a>)</li>
+</ul>
+<p>You can read about our <a href="https://main--typescript-eslint.netlify.app/users/versioning">versioning strategy</a> and <a href="https://main--typescript-eslint.netlify.app/users/releases">releases</a> on our website.</p>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md"><code>@​typescript-eslint/eslint-plugin</code>'s changelog</a>.</em></p>
+<blockquote>
+<h1><a href="https://github.com/typescript-eslint/typescript-eslint/compare/v6.10.0...v6.11.0">6.11.0</a> (2023-11-13)</h1>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>eslint-plugin:</strong> [explicit-function-return-type] support JSX attributes in <code>allowTypedFunctionExpressions</code> (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7553">#7553</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/be2777c5338669836d786f9a7806f499fd566dcd">be2777c</a>)</li>
+<li><strong>eslint-plugin:</strong> [no-unnecessary-qualifier] handle nested namespace id (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7883">#7883</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/a668f5b10e7b1570c732312ad9ccab3431459c1b">a668f5b</a>)</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li>add <code>no-unsafe-unary-minus</code> rule (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7390">#7390</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/c4709c2861f8ea4e18c289218a75224d6bb76193">c4709c2</a>)</li>
+<li>add types for flat config files (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7273">#7273</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/66cd0c0535e5de1b46ba337919a9a92748d2b0a6">66cd0c0</a>)</li>
+<li>allow <a href="mailto:typescript@5.3.0-RC">typescript@5.3.0-RC</a> as devDependency (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7821">#7821</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/b6c40b42b68d5567c7468030ee45b9b84bec4c4d">b6c40b4</a>)</li>
+<li><strong>eslint-plugin:</strong> no-unsafe-enum-comparison handles switch cases (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7898">#7898</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/72cb9e4ed397d35a8d8838d27dedbace6122179c">72cb9e4</a>)</li>
+<li><strong>utils:</strong> add ESLint <code>CodePath</code> selector types (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7551">#7551</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/99a026fe41b4b169914352fe66e7d5d687b300bf">99a026f</a>)</li>
+</ul>
+<p>You can read about our <a href="https://main--typescript-eslint.netlify.app/users/versioning">versioning strategy</a> and <a href="https://main--typescript-eslint.netlify.app/users/releases">releases</a> on our website.</p>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/06496e206a3219c01b370f6b5f8c89d41a4b86b8"><code>06496e2</code></a> chore: publish v6.11.0</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/a54a60b5d00eb34f2b4053e785041c6ecaa46863"><code>a54a60b</code></a> chore: add eslint-utils wrappers around deprecated ESLint methods (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7914">#7914</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/e77616b7c2fda1b5f74f91e74e7eb87427f59eca"><code>e77616b</code></a> chore(eslint-plugin): fixed no-unnecessary-condition complaints (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7837">#7837</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/8e87fac64428248731328aadf07ea03461b83f80"><code>8e87fac</code></a> chore: fix miscellaneous no-unnecessary-condition violations (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7834">#7834</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/72cb9e4ed397d35a8d8838d27dedbace6122179c"><code>72cb9e4</code></a> feat(eslint-plugin): no-unsafe-enum-comparison handles switch cases (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7898">#7898</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/99a026fe41b4b169914352fe66e7d5d687b300bf"><code>99a026f</code></a> feat(utils): add ESLint <code>CodePath</code> selector types (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7551">#7551</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/b6c40b42b68d5567c7468030ee45b9b84bec4c4d"><code>b6c40b4</code></a> feat: allow <a href="mailto:typescript@5.3.0-RC">typescript@5.3.0-RC</a> as devDependency (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7821">#7821</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/c4709c2861f8ea4e18c289218a75224d6bb76193"><code>c4709c2</code></a> feat: add <code>no-unsafe-unary-minus</code> rule (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7390">#7390</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/66cd0c0535e5de1b46ba337919a9a92748d2b0a6"><code>66cd0c0</code></a> feat: add types for flat config files (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7273">#7273</a>)</li>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/a668f5b10e7b1570c732312ad9ccab3431459c1b"><code>a668f5b</code></a> fix(eslint-plugin): [no-unnecessary-qualifier] handle nested namespace id (<a href="https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin/issues/7">#7</a>...</li>
+<li>Additional commits viewable in <a href="https://github.com/typescript-eslint/typescript-eslint/commits/v6.11.0/packages/eslint-plugin">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `@typescript-eslint/parser` from 6.10.0 to 6.11.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/typescript-eslint/typescript-eslint/releases"><code>@​typescript-eslint/parser</code>'s releases</a>.</em></p>
+<blockquote>
+<h2>v6.11.0</h2>
+<h1><a href="https://github.com/typescript-eslint/typescript-eslint/compare/v6.10.0...v6.11.0">6.11.0</a> (2023-11-13)</h1>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>eslint-plugin:</strong> [explicit-function-return-type] support JSX attributes in <code>allowTypedFunctionExpressions</code> (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7553">#7553</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/be2777c5338669836d786f9a7806f499fd566dcd">be2777c</a>)</li>
+<li><strong>eslint-plugin:</strong> [no-unnecessary-qualifier] handle nested namespace id (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7883">#7883</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/a668f5b10e7b1570c732312ad9ccab3431459c1b">a668f5b</a>)</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li>add <code>no-unsafe-unary-minus</code> rule (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7390">#7390</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/c4709c2861f8ea4e18c289218a75224d6bb76193">c4709c2</a>)</li>
+<li>add types for flat config files (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7273">#7273</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/66cd0c0535e5de1b46ba337919a9a92748d2b0a6">66cd0c0</a>)</li>
+<li>allow typescript <code>5.3.0-beta</code> as <code>devDependency</code> (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7821">#7821</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/b6c40b42b68d5567c7468030ee45b9b84bec4c4d">b6c40b4</a>)</li>
+<li><strong>eslint-plugin:</strong> no-unsafe-enum-comparison handles switch cases (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7898">#7898</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/72cb9e4ed397d35a8d8838d27dedbace6122179c">72cb9e4</a>)</li>
+<li><strong>typescript-estree:</strong> skip <code>isTTY</code> version check if user passes <code>loggerFn</code> on unsupported TypeScript version warning (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7739">#7739</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/9656e135e78d9346d326d0c78ba772a5596c1812">9656e13</a>)</li>
+<li><strong>utils:</strong> add ESLint <code>CodePath</code> selector types (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7551">#7551</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/99a026fe41b4b169914352fe66e7d5d687b300bf">99a026f</a>)</li>
+<li><strong>utils:</strong> update types to reflect <code>RuleContext</code> and <code>SourceCode</code> changes and deprecations (<a href="https://redirect.github.com/typescript-eslint/typescript-eslint/issues/7812">#7812</a>) (<a href="https://github.com/typescript-eslint/typescript-eslint/commit/b73d8b21dea9c6697a68039ffba848d21b04402c">b73d8b2</a>)</li>
+</ul>
+<p>You can read about our <a href="https://main--typescript-eslint.netlify.app/users/versioning">versioning strategy</a> and <a href="https://main--typescript-eslint.netlify.app/users/releases">releases</a> on our website.</p>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md"><code>@​typescript-eslint/parser</code>'s changelog</a>.</em></p>
+<blockquote>
+<h1><a href="https://github.com/typescript-eslint/typescript-eslint/compare/v6.10.0...v6.11.0">6.11.0</a> (2023-11-13)</h1>
+<p><strong>Note:</strong> Version bump only for package <code>@​typescript-eslint/parser</code></p>
+<p>You can read about our <a href="https://main--typescript-eslint.netlify.app/users/versioning">versioning strategy</a> and <a href="https://main--typescript-eslint.netlify.app/users/releases">releases</a> on our website.</p>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/typescript-eslint/typescript-eslint/commit/06496e206a3219c01b370f6b5f8c89d41a4b86b8"><code>06496e2</code></a> chore: publish v6.11.0</li>
+<li>See full diff in <a href="https://github.com/typescript-eslint/typescript-eslint/commits/v6.11.0/packages/parser">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `marked-gfm-heading-id` from 3.1.0 to 3.1.1
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/markedjs/marked-gfm-heading-id/releases">marked-gfm-heading-id's releases</a>.</em></p>
+<blockquote>
+<h2>v3.1.1</h2>
+<h2><a href="https://github.com/markedjs/marked-gfm-heading-id/compare/v3.1.0...v3.1.1">3.1.1</a> (2023-11-11)</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li>allow marked v10 (<a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/444">#444</a>) (<a href="https://github.com/markedjs/marked-gfm-heading-id/commit/914ff5682e13efd246656d8414dc7447b9073040">914ff56</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/6b2d01ed0ba51a53d90eb76ff581e30204f42a28"><code>6b2d01e</code></a> chore(release): 3.1.1 [skip ci]</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/914ff5682e13efd246656d8414dc7447b9073040"><code>914ff56</code></a> fix: allow marked v10 (<a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/444">#444</a>)</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/6ff23677803110016f43e43500e8d984176ed1c3"><code>6ff2367</code></a> Merge pull request <a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/443">#443</a> from markedjs/dependabot/npm_and_yarn/semantic-releas...</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/a3ecb326a9b418ecd617ed43f5c52e308c9c5b20"><code>a3ecb32</code></a> Merge pull request <a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/440">#440</a> from markedjs/dependabot/npm_and_yarn/marked-9.1.5</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/582db9657b1f71190ee05b9457ed47545cb8b9bf"><code>582db96</code></a> chore(deps-dev): bump <code>@​semantic-release/release-notes-generator</code></li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/d18ab1c6ff6ddf760fe381a66320b986f1ce362d"><code>d18ab1c</code></a> chore(deps-dev): bump marked from 9.1.3 to 9.1.5</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/d5e1c9e27ffa4fc7c3d97be4c88458db54fcf104"><code>d5e1c9e</code></a> Merge pull request <a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/442">#442</a> from markedjs/dependabot/npm_and_yarn/eslint-8.53.0</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/18c64064af20b3c3b5592be15fdab1561872489b"><code>18c6406</code></a> Merge pull request <a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/441">#441</a> from markedjs/dependabot/npm_and_yarn/semantic-releas...</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/87e7333c7d46a4933d63c35ff78a196f185911ed"><code>87e7333</code></a> Merge pull request <a href="https://redirect.github.com/markedjs/marked-gfm-heading-id/issues/439">#439</a> from markedjs/dependabot/npm_and_yarn/semantic-releas...</li>
+<li><a href="https://github.com/markedjs/marked-gfm-heading-id/commit/37e6964ab813d060de535c4e6c0be75d179ccc36"><code>37e6964</code></a> chore(deps-dev): bump eslint from 8.52.0 to 8.53.0</li>
+<li>Additional commits viewable in <a href="https://github.com/markedjs/marked-gfm-heading-id/compare/v3.1.0...v3.1.1">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `prettier` from 3.0.3 to 3.1.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/prettier/prettier/releases">prettier's releases</a>.</em></p>
+<blockquote>
+<h2>3.1.0</h2>
+<p><a href="https://github.com/prettier/prettier/compare/3.0.3...3.1.0">diff</a></p>
+<p>🔗 <a href="https://prettier.io/blog/2023/11/13/3.1.0.html">Release note</a></p>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/prettier/prettier/blob/main/CHANGELOG.md">prettier's changelog</a>.</em></p>
+<blockquote>
+<h1>3.1.0</h1>
+<p><a href="https://github.com/prettier/prettier/compare/3.0.3...3.1.0">diff</a></p>
+<p>🔗 <a href="https://prettier.io/blog/2023/11/13/3.1.0.html">Release Notes</a></p>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/prettier/prettier/commit/e8ac9f8d2a1c7083ac4f8a9b960521b62d60c94f"><code>e8ac9f8</code></a> Release 3.1.0</li>
+<li><a href="https://github.com/prettier/prettier/commit/6a1d4096b9fdc60c93fbcbc90465293906fcd2d0"><code>6a1d409</code></a> chore(deps): update dependency eslint-plugin-regexp to v2 (<a href="https://redirect.github.com/prettier/prettier/issues/15521">#15521</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/f4d93d3d226c67e3b01dbea39ee92d869786953d"><code>f4d93d3</code></a> chore(deps): update dependency esbuild to v0.19.5 (<a href="https://redirect.github.com/prettier/prettier/issues/15630">#15630</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/4fc71a5ce895e8a022970cf4072432a60efb5a10"><code>4fc71a5</code></a> chore(deps): update dependency flow-parser to v0.221.0 (<a href="https://redirect.github.com/prettier/prettier/issues/15637">#15637</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/d452f45c19a8b19087868509fa426f6bd562dfdc"><code>d452f45</code></a> chore(deps): update dependency eslint-plugin-jest to v27.6.0 (<a href="https://redirect.github.com/prettier/prettier/issues/15635">#15635</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/eb84a60ef8f2c5a8ccf909d34560c3ba7beaf5c9"><code>eb84a60</code></a> chore(deps): update dependency <code>@​types/estree</code> to v1.0.5 (<a href="https://redirect.github.com/prettier/prettier/issues/15625">#15625</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/2af23eefd07a75dc15782b00435f8caadc00c3ad"><code>2af23ee</code></a> chore(deps): update dependency webpack to v5.89.0 (<a href="https://redirect.github.com/prettier/prettier/issues/15640">#15640</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/8f27c736b3bfbb44583f33f43fb99425cae69783"><code>8f27c73</code></a> chore(deps): update dependency eslint-plugin-unicorn to v49 (<a href="https://redirect.github.com/prettier/prettier/issues/15642">#15642</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/cdc5f5a60b8667284779b963d770861af9c7ee63"><code>cdc5f5a</code></a> chore(deps): update dependency webpack to v5.89.0 (<a href="https://redirect.github.com/prettier/prettier/issues/15639">#15639</a>)</li>
+<li><a href="https://github.com/prettier/prettier/commit/14607efc39f91adbe6914cb80844643c6dfa3033"><code>14607ef</code></a> chore(deps): update dependency eslint-plugin-n to v16.3.1 (<a href="https://redirect.github.com/prettier/prettier/issues/15636">#15636</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/prettier/prettier/compare/3.0.3...3.1.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `prettier-plugin-svelte` from 3.0.3 to 3.1.0
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/prettier-plugin-svelte/blob/master/CHANGELOG.md">prettier-plugin-svelte's changelog</a>.</em></p>
+<blockquote>
+<h2>3.1.0</h2>
+<ul>
+<li>(feat) add experimental support for Svelte 5</li>
+<li>(feat) support <code>#snippet</code> and <code>@render</code></li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/sveltejs/prettier-plugin-svelte/commit/dd66514dba8184721c921433e0654884663c9ac1"><code>dd66514</code></a> feat: add experimental support for Svelte 5</li>
+<li><a href="https://github.com/sveltejs/prettier-plugin-svelte/commit/9060efde88d3a70560ba663b08217c79dc11d631"><code>9060efd</code></a> docs: Update README.md (<a href="https://redirect.github.com/sveltejs/prettier-plugin-svelte/issues/399">#399</a>)</li>
+<li><a href="https://github.com/sveltejs/prettier-plugin-svelte/commit/b269610ce65de5a8e1c7699c39f24076b00a2bdb"><code>b269610</code></a> docs: remove nonexistent options (<a href="https://redirect.github.com/sveltejs/prettier-plugin-svelte/issues/397">#397</a>)</li>
+<li>See full diff in <a href="https://github.com/sveltejs/prettier-plugin-svelte/compare/v3.0.3...v3.1.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `svelte-check` from 3.5.2 to 3.6.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/language-tools/releases">svelte-check's releases</a>.</em></p>
+<blockquote>
+<h2>svelte-check-3.6.0</h2>
+<ul>
+<li>feat: add experimental compatibility for Svelte 5</li>
+<li>fix: enhance numberOnlyAttributes list</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/sveltejs/language-tools/commit/66e6d97413cb788a7aee65fadf514b13bd6e2216"><code>66e6d97</code></a> fix: handle undefined stats</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/221ee2e004ab547d1a29cc2fd6990c20170e579d"><code>221ee2e</code></a> fix: handle runes looking like stores</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/64d7b773adfb136b0f4b59e31d03eea7ada1d508"><code>64d7b77</code></a> feat: experimental support for Svelte 5 (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2198">#2198</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/663e602da39f118b1936a086612dd4975cdd5db2"><code>663e602</code></a> feat: add option to force-start svelte plugin (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2185">#2185</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/98848db6d4dd06e7822553c0f6138a88ccc06c32"><code>98848db</code></a> fix: enhance numberOnlyAttributes list</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/3dc6ede879be9f36eda2f023c3c53c55df631e3a"><code>3dc6ede</code></a> fix build with svelte 4 and estree-walker 3 (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2176">#2176</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/d637d4e87ad9fd5b8fbf2ba93e374a064c24e342"><code>d637d4e</code></a> feat: folding range support (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2169">#2169</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/4424524321bd60d71eac37b6762984d86009a11c"><code>4424524</code></a> fix: enhance precompile blank for parser error workaround (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2173">#2173</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/582b76a07fbe2f2353be44b74c762344a0668ac5"><code>582b76a</code></a> feat: ts5.2 clickable inlay parameter hints (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2162">#2162</a>)</li>
+<li><a href="https://github.com/sveltejs/language-tools/commit/62a1c9416b8512267dacc328030707eb600b6585"><code>62a1c94</code></a> fix:  patch file reference and navigate to items in ts plugin (<a href="https://redirect.github.com/sveltejs/language-tools/issues/2174">#2174</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/sveltejs/language-tools/compare/svelte-check-3.5.2...svelte-check-3.6.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `sveltekit-superforms` from 1.10.1 to 1.10.2
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/ciscoheat/sveltekit-superforms/blob/main/CHANGELOG.md">sveltekit-superforms's changelog</a>.</em></p>
+<blockquote>
+<h2>[1.10.2] - 2023-11-14</h2>
+<h3>Fixed</h3>
+<ul>
+<li>Timers weren't starting until after <code>onSubmit</code>, allowing multiple form submissions on longer async operations. (<a href="https://redirect.github.com/ciscoheat/sveltekit-superforms/issues/284">#284</a>)</li>
+<li>Fixed constraints on fields that starts with a number. (<a href="https://redirect.github.com/ciscoheat/sveltekit-superforms/issues/285">#285</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li>See full diff in <a href="https://github.com/ciscoheat/sveltekit-superforms/commits">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot merge` will merge this PR after your CI passes on it
+- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it
+- `@dependabot cancel merge` will cancel a previously requested merge and block automerging
+- `@dependabot reopen` will reopen this PR if it is closed
+- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore <dependency name> major version` will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)
+- `@dependabot ignore <dependency name> minor version` will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)
+- `@dependabot ignore <dependency name>` will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)
+- `@dependabot unignore <dependency name>` will remove all of the ignore conditions of the specified dependency
+- `@dependabot unignore <dependency name> <ignore condition>` will remove the ignore condition of the specified dependency and ignore conditions
+
+
+</details>

@@ -1,0 +1,55 @@
+const groupedPRRegex = /Bump the .+? group with/;
+export function isGroupedPR(title: string) {
+	return groupedPRRegex.test(title);
+}
+
+export type PackageUpdate = { package: string; from: string; to: string };
+export function extractUpdates(body: string): PackageUpdate[] {
+	// e.g. | [@auth/sveltekit](https://github.com/nextauthjs/next-auth) | `0.3.11` | `0.3.12` |
+	const updateRegex = /\| \[(.+?)\]\(.+?\) \| `(.+?)` \| `(.+?)` \|/g;
+	const updates = [];
+	let match: RegExpExecArray | null;
+	while ((match = updateRegex.exec(body)) !== null) {
+		updates.push({
+			package: match[1],
+			from: match[2],
+			to: match[3],
+		});
+	}
+	return updates;
+}
+
+export function getChangesetName(pkg: string) {
+	const name = pkg.replace(/\//g, '__');
+	return `${name}.md`;
+}
+
+/**
+ * Extract the update from an existing changeset
+ */
+export function extractChangesetUpdate(body: string): PackageUpdate | undefined {
+	// e.g. `Bump @typescript-eslint/eslint-plugin from 6.9.1 to 6.10.0`
+	const updateRegex = /Bump (.+?) from (.+?) to (.+?)(?:\n|$)/;
+	const match = updateRegex.exec(body);
+	if (match === null) return undefined;
+	return {
+		package: match[1],
+		from: match[2],
+		to: match[3],
+	};
+}
+
+export function generateChangeset(packageName: string, updateType: string, update: PackageUpdate) {
+	// e.g.
+	// ---
+	// "my-repo": patch
+	// ---
+	// Bump @typescript-eslint/parser from 6.10.0 to 6.11.0
+	//
+	return `---
+${JSON.stringify(packageName)}: ${updateType}
+---
+
+Bump ${update.package} from ${update.from} to ${update.to}
+`;
+}

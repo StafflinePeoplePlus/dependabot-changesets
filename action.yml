@@ -1,23 +1,33 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Dependabot Changesets'
+description: Github action to generate and commit changesets for dependabot PRs, grouped or ungrouped
+author: StafflinePeoplePlus
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'box'
+  color: 'blue'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  owner:
+    description: 'The owner of the repository'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+  repo:
+    description: 'The name of the repository'
+    required: true
+  prNumber:
+    description: 'The number of the pull request'
+    required: true
+  token:
+    description: 'The token to use to access the GitHub API'
+    required: true
+  packageName:
+    description: 'Name of the package to generate the changeset for, defaults to the repo name'
+    required: false
+  updateType:
+    description: 'Type of update to generate the changeset for, defaults to "patch"'
+    required: false
+    default: patch
 
 runs:
   using: node20

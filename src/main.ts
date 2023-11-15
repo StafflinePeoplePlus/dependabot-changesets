@@ -1,26 +1,65 @@
-import * as core from '@actions/core'
-import { wait } from './wait'
+import * as core from '@actions/core';
+import * as github from '@actions/github';
+import { exec } from '@actions/exec';
+import {
+	extractChangesetUpdate,
+	extractUpdates,
+	generateChangeset,
+	getChangesetName,
+	isGroupedPR,
+} from './utils';
+import { readFile, writeFile } from 'fs/promises';
 
 /**
  * The main function for the action.
- * @returns {Promise<void>} Resolves when the action is complete.
+ * @returns Resolves when the action is complete.
  */
 export async function run(): Promise<void> {
-  try {
-    const ms: string = core.getInput('milliseconds')
+	try {
+		const owner = core.getInput('owner', { required: true });
+		const repo = core.getInput('repo', { required: true });
+		const prNumber = core.getInput('prNumber', { required: true });
+		const token = core.getInput('token', { required: true });
+		const packageName = core.getInput('packageName', { required: false }) ?? repo;
+		const updateType = core.getInput('updateType', { required: false }) ?? 'patch';
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+		const octokit = github.getOctokit(token);
+		const pr = await octokit.rest.pulls.get({ owner, repo, pull_number: Number(prNumber) });
+		if (pr.status !== 200) {
+			core.debug(JSON.stringify(pr, null, 4));
+			throw new Error('Error fetching PR');
+		}
+		core.debug(`Found PR: '${pr.data.title}'`);
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+		if (!isGroupedPR(pr.data.title)) {
+			throw new Error('Only grouped dependabot PRs are currently supported.');
+		}
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) core.setFailed(error.message)
-  }
+		const updates = extractUpdates(pr.data.body ?? '');
+		core.debug(`Found updates: ${JSON.stringify(updates, null, 4)}`);
+		if (updates.length === 0) {
+			throw new Error('no dependency updates found in PR');
+		}
+
+		for (const update of updates) {
+			const changesetName = getChangesetName(update.package);
+			const changesetPath = `.changeset/${changesetName}`;
+			const existingChangeset = await readFile(changesetName, 'utf-8').catch(() => undefined);
+			if (existingChangeset) {
+				const existingUpdate = extractChangesetUpdate(existingChangeset);
+				if (existingUpdate) {
+					update.from = existingUpdate.from;
+				}
+			}
+
+			await writeFile(changesetPath, generateChangeset(packageName, updateType, update), 'utf-8');
+			core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
+		}
+
+		await exec("git commit -am 'add changeset for dependecy updates'");
+		await exec('git push');
+	} catch (error) {
+		// Fail the workflow run if an error occurs
+		if (error instanceof Error) core.setFailed(error.message);
+	}
 }
