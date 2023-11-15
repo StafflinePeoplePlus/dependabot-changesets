@@ -29776,7 +29776,7 @@ async function run() {
         for (const update of updates) {
             const changesetName = (0, utils_1.getChangesetName)(update.package);
             const changesetPath = `.changeset/${changesetName}`;
-            const existingChangeset = await (0, promises_1.readFile)(changesetName, 'utf-8').catch(() => undefined);
+            const existingChangeset = await (0, promises_1.readFile)(changesetPath, 'utf-8').catch(() => undefined);
             if (existingChangeset) {
                 const existingUpdate = (0, utils_1.extractChangesetUpdate)(existingChangeset);
                 if (existingUpdate) {
