@@ -29784,7 +29784,7 @@ async function run() {
             core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
         }
         await (0, exec_1.exec)('git add .changeset/*');
-        await (0, exec_1.exec)("git commit -m 'add changeset for dependecy updates'");
+        await (0, exec_1.exec)('git', ['commit', '-m', 'add changeset for dependecy updates']);
         await (0, exec_1.exec)('git push');
     }
     catch (error) {
