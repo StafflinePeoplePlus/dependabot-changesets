@@ -29747,7 +29747,7 @@ async function run() {
         const repo = core.getInput('repo', { required: true });
         const prNumber = core.getInput('pr-number', { required: true });
         const token = core.getInput('token', { required: true });
-        const packageName = core.getInput('package-name', { required: false }) ?? repo;
+        const packageName = core.getInput('package-name', { required: false }) || repo;
         const updateType = core.getInput('update-type', { required: false }) ?? 'patch';
         const gitUser = core.getInput('git-user', { required: false }) ?? 'github-actions[bot]';
         const gitEmail = core.getInput('git-email', { required: false }) ??
