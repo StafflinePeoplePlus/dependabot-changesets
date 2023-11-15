@@ -29756,10 +29756,16 @@ async function run() {
             throw new Error('Error fetching PR');
         }
         core.debug(`Found PR: '${pr.data.title}'`);
-        if (!(0, utils_1.isGroupedPR)(pr.data.title)) {
-            throw new Error('Only grouped dependabot PRs are currently supported.');
+        let updates = [];
+        if ((0, utils_1.isGroupedPR)(pr.data.title)) {
+            updates = (0, utils_1.extractUpdates)(pr.data.body ?? '');
         }
-        const updates = (0, utils_1.extractUpdates)(pr.data.body ?? '');
+        else {
+            const update = (0, utils_1.extractChangesetUpdate)(pr.data.title);
+            if (update) {
+                updates = [update];
+            }
+        }
         core.debug(`Found updates: ${JSON.stringify(updates, null, 4)}`);
         if (updates.length === 0) {
             throw new Error('no dependency updates found in PR');
@@ -29777,7 +29783,8 @@ async function run() {
             await (0, promises_1.writeFile)(changesetPath, (0, utils_1.generateChangeset)(packageName, updateType, update), 'utf-8');
             core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
         }
-        await (0, exec_1.exec)("git commit -am 'add changeset for dependecy updates'");
+        await (0, exec_1.exec)('git add .changeset/*');
+        await (0, exec_1.exec)("git commit -m 'add changeset for dependecy updates'");
         await (0, exec_1.exec)('git push');
     }
     catch (error) {
@@ -29797,7 +29804,7 @@ exports.run = run;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.generateChangeset = exports.extractChangesetUpdate = exports.getChangesetName = exports.extractUpdates = exports.isGroupedPR = void 0;
+exports.generateChangeset = exports.extractChangesetUpdate = exports.getChangesetName = exports.extractUpdateFromTitle = exports.extractUpdates = exports.isGroupedPR = void 0;
 const groupedPRRegex = /Bump the .+? group with/;
 function isGroupedPR(title) {
     return groupedPRRegex.test(title);
@@ -29818,6 +29825,11 @@ function extractUpdates(body) {
     return updates;
 }
 exports.extractUpdates = extractUpdates;
+function extractUpdateFromTitle(title) {
+    // They end up being the same thing!
+    return extractChangesetUpdate(title);
+}
+exports.extractUpdateFromTitle = extractUpdateFromTitle;
 function getChangesetName(pkg) {
     const name = pkg.replace(/\//g, '__');
     return `${name}.md`;
