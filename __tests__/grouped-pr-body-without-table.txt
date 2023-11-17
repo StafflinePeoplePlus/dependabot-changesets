@@ -1,0 +1,200 @@
+Bumps the all group with 3 updates: [@playwright/test](https://github.com/microsoft/playwright), [svelte](https://github.com/sveltejs/svelte/tree/HEAD/packages/svelte) and [wrangler](https://github.com/cloudflare/workers-sdk/tree/HEAD/packages/wrangler).
+
+Updates `@playwright/test` from 1.39.0 to 1.40.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/microsoft/playwright/releases"><code>@​playwright/test</code>'s releases</a>.</em></p>
+<blockquote>
+<h2>v1.40.0</h2>
+<h2>Test Generator Update</h2>
+<p><img src="https://github.com/microsoft/playwright/assets/9881434/e8d67e2e-f36d-4301-8631-023948d3e190" alt="Playwright Test Generator" /></p>
+<p>New tools to generate assertions:</p>
+<ul>
+<li>&quot;Assert visibility&quot; tool generates <a href="https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-be-visible">expect(locator).toBeVisible()</a>.</li>
+<li>&quot;Assert value&quot; tool generates <a href="https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-have-value">expect(locator).toHaveValue(value)</a>.</li>
+<li>&quot;Assert text&quot; tool generates <a href="https://playwright.dev/docs/api/class-locatorassertions#locator-assertions-to-contain-text">expect(locator).toContainText(text)</a>.</li>
+</ul>
+<p>Here is an example of a generated test with assertions:</p>
+<pre lang="js"><code>import { test, expect } from '@playwright/test';
+<p>test('test', async ({ page }) =&gt; {
+await page.goto('<a href="https://playwright.dev/">https://playwright.dev/</a>');
+await page.getByRole('link', { name: 'Get started' }).click();
+await expect(page.getByLabel('Breadcrumbs').getByRole('list')).toContainText('Installation');
+await expect(page.getByLabel('Search')).toBeVisible();
+await page.getByLabel('Search').click();
+await page.getByPlaceholder('Search docs').fill('locator');
+await expect(page.getByPlaceholder('Search docs')).toHaveValue('locator');
+});
+</code></pre></p>
+<h2>New APIs</h2>
+<ul>
+<li>Option <code>reason</code> in <a href="https://playwright.dev/docs/api/class-page#page-close">page.close()</a>, <a href="https://playwright.dev/docs/api/class-browsercontext#browser-context-close">browserContext.close()</a> and <a href="https://playwright.dev/docs/api/class-browser#browser-close">browser.close()</a>. Close reason is reported for all operations interrupted by the closure.</li>
+<li>Option <code>firefoxUserPrefs</code> in <a href="https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context">browserType.launchPersistentContext(userDataDir)</a>.</li>
+</ul>
+<h2>Other Changes</h2>
+<ul>
+<li>Methods <a href="https://playwright.dev/docs/api/class-download#download-path">download.path()</a> and <a href="https://playwright.dev/docs/api/class-download#download-create-read-stream">download.createReadStream()</a> throw an error for failed and cancelled downloads.</li>
+<li>Playwright <a href="https://playwright.dev/docs/docker">docker image</a> now comes with Node.js v20.</li>
+</ul>
+<h2>Browser Versions</h2>
+<ul>
+<li>Chromium 120.0.6099.28</li>
+<li>Mozilla Firefox 119.0</li>
+<li>WebKit 17.4</li>
+</ul>
+<p>This version was also tested against the following stable channels:</p>
+<ul>
+<li>Google Chrome 119</li>
+<li>Microsoft Edge 119</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/microsoft/playwright/commit/b8949166dc08e0ae499d08bec004a3f1a4e26ec8"><code>b894916</code></a> cherry-pick(<a href="https://redirect.github.com/microsoft/playwright/issues/28198">#28198</a>): feat(recorder): UX updates for assertion tools (<a href="https://redirect.github.com/microsoft/playwright/issues/28202">#28202</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/59e8f4815ddc99b53b3856805c83841ad5586eab"><code>59e8f48</code></a> chore: mark v1.40.0 (<a href="https://redirect.github.com/microsoft/playwright/issues/28199">#28199</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/85438edb97772d501443eaf5deaeab9f064b2045"><code>85438ed</code></a> test: Intl.ListFormat is working in playwright all browsers (<a href="https://redirect.github.com/microsoft/playwright/issues/28178">#28178</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/aec4399d8f97e06470859e50e2acf81efe748d64"><code>aec4399</code></a> docs: release notes for v1.40 (<a href="https://redirect.github.com/microsoft/playwright/issues/28175">#28175</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/25b9c4eb4ae7aac078cecb731faaa32128c57c8a"><code>25b9c4e</code></a> chore: do not lose error name for js errors (<a href="https://redirect.github.com/microsoft/playwright/issues/28177">#28177</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/4575c9a182b72df4d6720690ebe5b4911d240a45"><code>4575c9a</code></a> chore(logs): Add new log level to capture client-server message's metadata in...</li>
+<li><a href="https://github.com/microsoft/playwright/commit/80bab8afae12603e9a8ed6a094cf7a7317e51a45"><code>80bab8a</code></a> fix(electron/android): re-add Element.prototype.checkVisibility check (<a href="https://redirect.github.com/microsoft/playwright/issues/28173">#28173</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/7ffcb42551d920a4733e37f1b16bb0441996bb92"><code>7ffcb42</code></a> test: fix 'exposeFunction should not leak' in video mode (<a href="https://redirect.github.com/microsoft/playwright/issues/28169">#28169</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/0867c3ce5b2f7563c99f279d433885d8ec8423d9"><code>0867c3c</code></a> feat(chromium): roll to r1091 (<a href="https://redirect.github.com/microsoft/playwright/issues/28171">#28171</a>)</li>
+<li><a href="https://github.com/microsoft/playwright/commit/1c8ceb0a029533c7c05b20176aaffd41eb6f65bb"><code>1c8ceb0</code></a> fix(html-reporter): Include specified host and port in the logged instruction...</li>
+<li>Additional commits viewable in <a href="https://github.com/microsoft/playwright/compare/v1.39.0...v1.40.0">compare view</a></li>
+</ul>
+</details>
+<details>
+<summary>Maintainer changes</summary>
+<p>This version was pushed to npm by <a href="https://www.npmjs.com/~dgozman-ms">dgozman-ms</a>, a new releaser for <code>@​playwright/test</code> since your current version.</p>
+</details>
+<br />
+
+Updates `svelte` from 4.2.3 to 4.2.4
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/svelte/releases">svelte's releases</a>.</em></p>
+<blockquote>
+<h2>svelte@4.2.4</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>fix: handle closing tags inside attribute values (<a href="https://redirect.github.com/sveltejs/svelte/pull/9486">#9486</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/sveltejs/svelte/blob/svelte@4.2.4/packages/svelte/CHANGELOG.md">svelte's changelog</a>.</em></p>
+<blockquote>
+<h2>4.2.4</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>fix: handle closing tags inside attribute values (<a href="https://redirect.github.com/sveltejs/svelte/pull/9486">#9486</a>)</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/sveltejs/svelte/commit/2ea17648f236724c46590d596048ebfaa29ef21f"><code>2ea1764</code></a> Version Packages (<a href="https://github.com/sveltejs/svelte/tree/HEAD/packages/svelte/issues/9491">#9491</a>)</li>
+<li><a href="https://github.com/sveltejs/svelte/commit/b2e1f1c1029bd059961a50d51e4da8f2e741a9d7"><code>b2e1f1c</code></a> fix: handle closing tags inside attribute values (<a href="https://github.com/sveltejs/svelte/tree/HEAD/packages/svelte/issues/9486">#9486</a>)</li>
+<li>See full diff in <a href="https://github.com/sveltejs/svelte/commits/svelte@4.2.4/packages/svelte">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `wrangler` from 3.15.0 to 3.16.0
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/cloudflare/workers-sdk/blob/main/packages/wrangler/CHANGELOG.md">wrangler's changelog</a>.</em></p>
+<blockquote>
+<h2>3.16.0</h2>
+<h3>Minor Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4347">#4347</a> <a href="https://github.com/cloudflare/workers-sdk/commit/102e15f9e735ff7506cfff457046137ee7b03c32"><code>102e15f9</code></a> Thanks <a href="https://github.com/Skye-31"><code>@​Skye-31</code></a>! - Feat(unstable_dev): Provide an option for unstable_dev to perform the check that prompts users to update wrangler, defaulting to false. This will prevent unstable_dev from sending a request to NPM on startup to determine whether it needs to be updated.</li>
+</ul>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4179">#4179</a> <a href="https://github.com/cloudflare/workers-sdk/commit/dd270d0065159150ff318f2f06607ddecba6ee9b"><code>dd270d00</code></a> Thanks <a href="https://github.com/matthewdavidrodgers"><code>@​matthewdavidrodgers</code></a>! - Simplify secret:bulk api via script settings</p>
+<p>Firing PUTs to the secret api in parallel has never been a great solution - each request independently needs to lock the script, so running in parallel is at best just as bad as running serially.</p>
+<p>Luckily, we have the script settings PATCH api now, which can update the settings for a script (including secret bindings) at once, which means we don't need any parallelization. However this api doesn't work with a partial list of bindings, so we have to fetch the current bindings and merge in with the new secrets before PATCHing. We can however just omit the value of the binding (i.e. only provide the name and type) which instructs the config service to inherit the existing value, which simplifies this as well. Note that we don't use the bindings in your current wrangler.toml, as you could be in a draft state, and it makes sense as a user that a bulk secrets update won't update anything else. Instead, we use script settings api again to fetch the current state of your bindings.</p>
+<p>This simplified implementation means the operation can only fail or succeed, rather than succeeding in updating some secrets but failing for others. In order to not introduce breaking changes for logging output, the language around &quot;${x} secrets were updated&quot; or &quot;${x} secrets failed&quot; is kept, even if it doesn't make much sense anymore.</p>
+</li>
+</ul>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4402">#4402</a> <a href="https://github.com/cloudflare/workers-sdk/commit/baa76e774038393fb6b491e2c371da53b8b2a676"><code>baa76e77</code></a> Thanks <a href="https://github.com/rozenmd"><code>@​rozenmd</code></a>! - This PR adds a fetch handler that uses <code>page</code>, assuming <code>result_info</code> provided by the endpoint contains <code>page</code>, <code>per_page</code>, and <code>total</code></p>
+<p>This is needed as the existing <code>fetchListResult</code> handler for fetching potentially paginated results doesn't work for endpoints that don't implement <code>cursor</code>.</p>
+<p>Fixes <a href="https://github.com/cloudflare/workers-sdk/tree/HEAD/packages/wrangler/issues/4349">#4349</a></p>
+</li>
+</ul>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4337">#4337</a> <a href="https://github.com/cloudflare/workers-sdk/commit/6c8f41f8e76890d6027fd97eaf4e88dccb509fc8"><code>6c8f41f8</code></a> Thanks <a href="https://github.com/Skye-31"><code>@​Skye-31</code></a>! - Improve the error message when a script isn't exported a Durable Object class</p>
+<p>Previously, wrangler would error with a message like <code>Uncaught TypeError: Class extends value undefined is not a constructor or null</code>. This improves that messaging to be more understandable to users.</p>
+</li>
+</ul>
+<ul>
+<li><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4307">#4307</a> <a href="https://github.com/cloudflare/workers-sdk/commit/7fbe1937b311f36077c92814207bbb15ef3878d6"><code>7fbe1937</code></a> Thanks <a href="https://github.com/jspspike"><code>@​jspspike</code></a>! - Change local dev server default ip to <code>*</code> instead of <code>0.0.0.0</code>. This will cause the dev server to listen on both ipv4 and ipv6 interfaces</li>
+</ul>
+<ul>
+<li><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4222">#4222</a> <a href="https://github.com/cloudflare/workers-sdk/commit/f867e01ca2967a11a8d5eda32da42941383753a8"><code>f867e01c</code></a> Thanks <a href="https://github.com/tmthecoder"><code>@​tmthecoder</code></a>! - Support for hyperdrive bindings in local wrangler dev</li>
+</ul>
+<ul>
+<li><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4149">#4149</a> <a href="https://github.com/cloudflare/workers-sdk/commit/7e05f38e04e40125c9c5352b7ff1c95616c1baf0"><code>7e05f38e</code></a> Thanks <a href="https://github.com/jspspike"><code>@​jspspike</code></a>! - Fixed issue with <code>tail</code> not using proxy</li>
+</ul>
+<ul>
+<li><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4219">#4219</a> <a href="https://github.com/cloudflare/workers-sdk/commit/0453b447251cc670310be6a2067c84074f6a515b"><code>0453b447</code></a> Thanks <a href="https://github.com/maxwellpeterson"><code>@​maxwellpeterson</code></a>! - Allows uploads with both cron triggers and smart placement enabled</li>
+</ul>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/cloudflare/workers-sdk/pull/4437">#4437</a> <a href="https://github.com/cloudflare/workers-sdk/commit/05b1bbd2f5b8e60268e30c276067c3a3ae1239cf"><code>05b1bbd2</code></a> Thanks <a href="https://github.com/jspspike"><code>@​jspspike</code></a>! - Change dev registry and inspector server to listen on 127.0.0.1 instead of all interfaces</p>
+</li>
+<li>
+<p>Updated dependencies [<a href="https://github.com/cloudflare/workers-sdk/commit/4f8b3420f93197d331491f012ff6f4626411bfc5"><code>4f8b3420</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/16cc2e923733b3c583b5bf6c40384c52fea04991"><code>16cc2e92</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/3637d97a99c9d5e8d0d2b5f3adaf4bd9993265f0"><code>3637d97a</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/29a59d4e72e3ae849474325c5c93252a3f84af0d"><code>29a59d4e</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/7fbe1937b311f36077c92814207bbb15ef3878d6"><code>7fbe1937</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/767878613eda535d125539a478d488d1a42feaa1"><code>76787861</code></a>, <a href="https://github.com/cloudflare/workers-sdk/commit/8a25b7fba94c8e9989412bc266ada307975f182d"><code>8a25b7fb</code></a>]:</p>
+<ul>
+<li>miniflare@3.20231030.0</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li>See full diff in <a href="https://github.com/cloudflare/workers-sdk/commits/HEAD/packages/wrangler">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot merge` will merge this PR after your CI passes on it
+- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it
+- `@dependabot cancel merge` will cancel a previously requested merge and block automerging
+- `@dependabot reopen` will reopen this PR if it is closed
+- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore <dependency name> major version` will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)
+- `@dependabot ignore <dependency name> minor version` will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)
+- `@dependabot ignore <dependency name>` will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)
+- `@dependabot unignore <dependency name>` will remove all of the ignore conditions of the specified dependency
+- `@dependabot unignore <dependency name> <ignore condition>` will remove the ignore condition of the specified dependency and ignore conditions
+
+
+</details>

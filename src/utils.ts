@@ -5,8 +5,8 @@ export function isGroupedPR(title: string) {
 
 export type PackageUpdate = { package: string; from: string; to: string };
 export function extractUpdates(body: string): PackageUpdate[] {
-	// e.g. | [@auth/sveltekit](https://github.com/nextauthjs/next-auth) | `0.3.11` | `0.3.12` |
-	const updateRegex = /\| \[(.+?)\]\(.+?\) \| `(.+?)` \| `(.+?)` \|/g;
+	// e.g. Updates `wrangler` from 3.15.0 to 3.16.0
+	const updateRegex = /(?:\n|^)Updates `(.+?)` from (.+?) to (.+?)(?:\n|$)/g;
 	const updates = [];
 	let match: RegExpExecArray | null;
 	while ((match = updateRegex.exec(body)) !== null) {
