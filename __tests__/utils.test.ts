@@ -20,8 +20,8 @@ describe('isGroupedPR', () => {
 });
 
 describe('extractUpdates', () => {
-	it('extracts updates from the body', async () => {
-		const body = await readFile(__dirname + '/grouped-pr-body.txt', 'utf-8');
+	it('extracts updates from the body with table', async () => {
+		const body = await readFile(__dirname + '/grouped-pr-body-with-table.txt', 'utf-8');
 		expect(extractUpdates(body)).toEqual([
 			{ package: '@auth/sveltekit', from: '0.3.11', to: '0.3.12' },
 			{ package: '@sveltejs/kit', from: '1.27.4', to: '1.27.6' },
@@ -32,6 +32,15 @@ describe('extractUpdates', () => {
 			{ package: 'prettier-plugin-svelte', from: '3.0.3', to: '3.1.0' },
 			{ package: 'svelte-check', from: '3.5.2', to: '3.6.0' },
 			{ package: 'sveltekit-superforms', from: '1.10.1', to: '1.10.2' },
+		]);
+	});
+
+	it('extracts updates from the body without table', async () => {
+		const body = await readFile(__dirname + '/grouped-pr-body-without-table.txt', 'utf-8');
+		expect(extractUpdates(body)).toEqual([
+			{ package: '@playwright/test', from: '1.39.0', to: '1.40.0' },
+			{ package: 'svelte', from: '4.2.3', to: '4.2.4' },
+			{ package: 'wrangler', from: '3.15.0', to: '3.16.0' },
 		]);
 	});
 });

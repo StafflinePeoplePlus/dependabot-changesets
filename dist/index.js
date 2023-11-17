@@ -29816,8 +29816,8 @@ function isGroupedPR(title) {
 }
 exports.isGroupedPR = isGroupedPR;
 function extractUpdates(body) {
-    // e.g. | [@auth/sveltekit](https://github.com/nextauthjs/next-auth) | `0.3.11` | `0.3.12` |
-    const updateRegex = /\| \[(.+?)\]\(.+?\) \| `(.+?)` \| `(.+?)` \|/g;
+    // e.g. Updates `wrangler` from 3.15.0 to 3.16.0
+    const updateRegex = /(?:\n|^)Updates `(.+?)` from (.+?) to (.+?)(?:\n|$)/g;
     const updates = [];
     let match;
     while ((match = updateRegex.exec(body)) !== null) {
