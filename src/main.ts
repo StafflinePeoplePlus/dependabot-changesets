@@ -73,6 +73,7 @@ export async function run(): Promise<void> {
 			return;
 		}
 
+		let newUpdates = 0;
 		for (const update of updates) {
 			const changesetName = getChangesetName(update.package);
 			const changesetPath = `.changeset/${changesetName}`;
@@ -83,9 +84,19 @@ export async function run(): Promise<void> {
 					update.from = existingUpdate.from;
 				}
 			}
-
-			await writeFile(changesetPath, generateChangeset(packageName, updateType, update), 'utf-8');
+			const newChangeset = generateChangeset(packageName, updateType, update);
+			if (existingChangeset === newChangeset) {
+				core.info(`⏭️ No changeset needed for ${update.package} (${update.from} -> ${update.to})`);
+				continue;
+			}
+			await writeFile(changesetPath, newChangeset, 'utf-8');
+			newUpdates++;
 			core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
+		}
+
+		if (newUpdates === 0) {
+			core.info('no new changesets created');
+			return;
 		}
 
 		await exec('git', ['config', '--global', 'user.name', gitUser]);

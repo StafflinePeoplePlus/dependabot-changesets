@@ -29741,6 +29741,7 @@ const dependabotCommitter = {
     name: 'dependabot[bot]',
     email: '49699333+dependabot[bot]@users.noreply.github.com',
 };
+const commitMessage = 'add changeset for dependency updates';
 /**
  * The main function for the action.
  * @returns Resolves when the action is complete.
@@ -29772,7 +29773,8 @@ async function run() {
                     repo,
                     pull_number: Number(prNumber),
                 });
-                const dependabotCommit = commits.data.find((commit) => commit.commit.author?.email === dependabotCommitter.email);
+                const dependabotCommit = commits.data.find((commit) => commit.commit.author?.email === dependabotCommitter.email &&
+                    commit.commit.message !== commitMessage);
                 if (dependabotCommit) {
                     updates = (0, utils_1.extractUpdates)(dependabotCommit.commit.message);
                 }
@@ -29786,8 +29788,10 @@ async function run() {
         }
         core.debug(`Found updates: ${JSON.stringify(updates, null, 4)}`);
         if (updates.length === 0) {
-            throw new Error('no dependency updates found in PR');
+            core.info('no dependency updates found in PR');
+            return;
         }
+        let newUpdates = 0;
         for (const update of updates) {
             const changesetName = (0, utils_1.getChangesetName)(update.package);
             const changesetPath = `.changeset/${changesetName}`;
@@ -29798,13 +29802,23 @@ async function run() {
                     update.from = existingUpdate.from;
                 }
             }
-            await (0, promises_1.writeFile)(changesetPath, (0, utils_1.generateChangeset)(packageName, updateType, update), 'utf-8');
+            const newChangeset = (0, utils_1.generateChangeset)(packageName, updateType, update);
+            if (existingChangeset === newChangeset) {
+                core.info(`⏭️ No changeset needed for ${update.package} (${update.from} -> ${update.to})`);
+                continue;
+            }
+            await (0, promises_1.writeFile)(changesetPath, newChangeset, 'utf-8');
+            newUpdates++;
             core.info(`✅ Created changeset for ${update.package} (${update.from} -> ${update.to}))`);
+        }
+        if (newUpdates === 0) {
+            core.info('no new changesets created');
+            return;
         }
         await (0, exec_1.exec)('git', ['config', '--global', 'user.name', gitUser]);
         await (0, exec_1.exec)('git', ['config', '--global', 'user.email', gitEmail]);
         await (0, exec_1.exec)('git add .changeset/*');
-        await (0, exec_1.exec)('git', ['commit', '-m', 'add changeset for dependency updates']);
+        await (0, exec_1.exec)('git', ['commit', '-m', commitMessage]);
         await (0, exec_1.exec)('git push');
     }
     catch (error) {
