@@ -69,7 +69,8 @@ export async function run(): Promise<void> {
 
 		core.debug(`Found updates: ${JSON.stringify(updates, null, 4)}`);
 		if (updates.length === 0) {
-			throw new Error('no dependency updates found in PR');
+			core.info('no dependency updates found in PR');
+			return;
 		}
 
 		for (const update of updates) {
