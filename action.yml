@@ -29,13 +29,13 @@ inputs:
     required: false
     default: patch
   git-user:
-    description: 'Username to use for git commits, defaults to "github-actions[bot]"'
+    description: 'Username to use for git commits, defaults to "dependabot[bot]"'
     required: false
-    default: github-actions[bot]
+    default: dependabot[bot]
   git-email:
-    description: 'Email to use for git commits, defaults to "41898282+github-actions[bot]@users.noreply.github.com"'
+    description: 'Email to use for git commits, defaults to "49699333+dependabot[bot]@users.noreply.github.com"'
     required: false
-    default: 41898282+github-actions[bot]@users.noreply.github.com
+    default: 49699333+dependabot[bot]@users.noreply.github.com
 
 runs:
   using: node20
