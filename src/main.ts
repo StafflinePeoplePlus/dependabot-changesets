@@ -51,7 +51,7 @@ export async function run(): Promise<void> {
 					pull_number: Number(prNumber),
 				});
 				const dependabotCommit = commits.data.find(
-					(commit) => commit.commit.committer?.email === dependabotCommitter.email,
+					(commit) => commit.commit.author?.email === dependabotCommitter.email,
 				);
 				if (dependabotCommit) {
 					updates = extractUpdates(dependabotCommit.commit.message);

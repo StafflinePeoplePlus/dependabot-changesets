@@ -29772,7 +29772,7 @@ async function run() {
                     repo,
                     pull_number: Number(prNumber),
                 });
-                const dependabotCommit = commits.data.find((commit) => commit.commit.committer?.email === dependabotCommitter.email);
+                const dependabotCommit = commits.data.find((commit) => commit.commit.author?.email === dependabotCommitter.email);
                 if (dependabotCommit) {
                     updates = (0, utils_1.extractUpdates)(dependabotCommit.commit.message);
                 }
