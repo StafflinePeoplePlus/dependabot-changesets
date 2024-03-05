@@ -4,12 +4,18 @@ import { exec } from '@actions/exec';
 import {
 	PackageUpdate,
 	extractChangesetUpdate,
+	extractUpdateFromTitle,
 	extractUpdates,
 	generateChangeset,
 	getChangesetName,
 	isGroupedPR,
 } from './utils';
 import { readFile, writeFile } from 'fs/promises';
+
+const dependabotCommitter = {
+	name: 'dependabot[bot]',
+	email: '49699333+dependabot[bot]@users.noreply.github.com',
+};
 
 /**
  * The main function for the action.
@@ -23,10 +29,8 @@ export async function run(): Promise<void> {
 		const token = core.getInput('token', { required: true });
 		const packageName = core.getInput('package-name', { required: false }) || repo;
 		const updateType = core.getInput('update-type', { required: false }) ?? 'patch';
-		const gitUser = core.getInput('git-user', { required: false }) ?? 'github-actions[bot]';
-		const gitEmail =
-			core.getInput('git-email', { required: false }) ??
-			'41898282+github-actions[bot]@users.noreply.github.com';
+		const gitUser = core.getInput('git-user', { required: false }) ?? dependabotCommitter.name;
+		const gitEmail = core.getInput('git-email', { required: false }) ?? dependabotCommitter.email;
 
 		const octokit = github.getOctokit(token);
 		const pr = await octokit.rest.pulls.get({ owner, repo, pull_number: Number(prNumber) });
@@ -39,8 +43,22 @@ export async function run(): Promise<void> {
 		let updates: PackageUpdate[] = [];
 		if (isGroupedPR(pr.data.title)) {
 			updates = extractUpdates(pr.data.body ?? '');
+			if (updates.length === 0) {
+				// PR body might have been too long, try to fetch the body from the commit
+				const commits = await octokit.rest.pulls.listCommits({
+					owner,
+					repo,
+					pull_number: Number(prNumber),
+				});
+				const dependabotCommit = commits.data.find(
+					(commit) => commit.commit.committer?.email === dependabotCommitter.email,
+				);
+				if (dependabotCommit) {
+					updates = extractUpdates(dependabotCommit.commit.message);
+				}
+			}
 		} else {
-			const update = extractChangesetUpdate(pr.data.title);
+			const update = extractUpdateFromTitle(pr.data.title);
 			if (update) {
 				updates = [update];
 			}

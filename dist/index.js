@@ -29737,6 +29737,10 @@ const github = __importStar(__nccwpck_require__(5438));
 const exec_1 = __nccwpck_require__(1514);
 const utils_1 = __nccwpck_require__(1314);
 const promises_1 = __nccwpck_require__(3292);
+const dependabotCommitter = {
+    name: 'dependabot[bot]',
+    email: '49699333+dependabot[bot]@users.noreply.github.com',
+};
 /**
  * The main function for the action.
  * @returns Resolves when the action is complete.
@@ -29749,9 +29753,8 @@ async function run() {
         const token = core.getInput('token', { required: true });
         const packageName = core.getInput('package-name', { required: false }) || repo;
         const updateType = core.getInput('update-type', { required: false }) ?? 'patch';
-        const gitUser = core.getInput('git-user', { required: false }) ?? 'github-actions[bot]';
-        const gitEmail = core.getInput('git-email', { required: false }) ??
-            '41898282+github-actions[bot]@users.noreply.github.com';
+        const gitUser = core.getInput('git-user', { required: false }) ?? dependabotCommitter.name;
+        const gitEmail = core.getInput('git-email', { required: false }) ?? dependabotCommitter.email;
         const octokit = github.getOctokit(token);
         const pr = await octokit.rest.pulls.get({ owner, repo, pull_number: Number(prNumber) });
         if (pr.status !== 200) {
@@ -29762,9 +29765,21 @@ async function run() {
         let updates = [];
         if ((0, utils_1.isGroupedPR)(pr.data.title)) {
             updates = (0, utils_1.extractUpdates)(pr.data.body ?? '');
+            if (updates.length === 0) {
+                // PR body might have been too long, try to fetch the body from the commit
+                const commits = await octokit.rest.pulls.listCommits({
+                    owner,
+                    repo,
+                    pull_number: Number(prNumber),
+                });
+                const dependabotCommit = commits.data.find((commit) => commit.commit.committer?.email === dependabotCommitter.email);
+                if (dependabotCommit) {
+                    updates = (0, utils_1.extractUpdates)(dependabotCommit.commit.message);
+                }
+            }
         }
         else {
-            const update = (0, utils_1.extractChangesetUpdate)(pr.data.title);
+            const update = (0, utils_1.extractUpdateFromTitle)(pr.data.title);
             if (update) {
                 updates = [update];
             }

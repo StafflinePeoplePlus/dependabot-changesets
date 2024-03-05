@@ -65,8 +65,7 @@ describe('extractChangesetUpdate', () => {
 });
 
 describe('generateChangeset', () => {
-	it('extracts update from changeset', async () => {
-		const body = await readFile(__dirname + '/example-changeset.txt', 'utf-8');
+	it('generates valid changeset', async () => {
 		expect(
 			generateChangeset('my-cool-package', 'patch', {
 				package: '@typescript-eslint/parser',
