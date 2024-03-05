@@ -16,6 +16,7 @@ const dependabotCommitter = {
 	name: 'dependabot[bot]',
 	email: '49699333+dependabot[bot]@users.noreply.github.com',
 };
+const commitMessage = 'add changeset for dependency updates';
 
 /**
  * The main function for the action.
@@ -51,7 +52,9 @@ export async function run(): Promise<void> {
 					pull_number: Number(prNumber),
 				});
 				const dependabotCommit = commits.data.find(
-					(commit) => commit.commit.author?.email === dependabotCommitter.email,
+					(commit) =>
+						commit.commit.author?.email === dependabotCommitter.email &&
+						commit.commit.message !== commitMessage,
 				);
 				if (dependabotCommit) {
 					updates = extractUpdates(dependabotCommit.commit.message);
@@ -87,7 +90,7 @@ export async function run(): Promise<void> {
 		await exec('git', ['config', '--global', 'user.name', gitUser]);
 		await exec('git', ['config', '--global', 'user.email', gitEmail]);
 		await exec('git add .changeset/*');
-		await exec('git', ['commit', '-m', 'add changeset for dependency updates']);
+		await exec('git', ['commit', '-m', commitMessage]);
 		await exec('git push');
 	} catch (error) {
 		// Fail the workflow run if an error occurs
