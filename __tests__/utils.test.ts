@@ -12,6 +12,7 @@ describe('isGroupedPR', () => {
 	it('returns true for grouped PR titles', async () => {
 		expect(isGroupedPR('Bump the all group with 9 updates')).toBe(true);
 		expect(isGroupedPR('Bump the asdfghjkl group with 25 updates')).toBe(true);
+		expect(isGroupedPR('Bump the all group across 1 directory with 19 updates')).toBe(true);
 	});
 	it('returns false for non grouped PR titles', async () => {
 		expect(isGroupedPR('Some other PR update')).toBe(false);

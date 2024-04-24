@@ -29839,7 +29839,7 @@ exports.run = run;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.generateChangeset = exports.extractChangesetUpdate = exports.getChangesetName = exports.extractUpdateFromTitle = exports.extractUpdates = exports.isGroupedPR = void 0;
-const groupedPRRegex = /Bump the .+? group with/;
+const groupedPRRegex = /Bump the .+? group/;
 function isGroupedPR(title) {
     return groupedPRRegex.test(title);
 }
