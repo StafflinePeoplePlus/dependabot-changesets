@@ -1,5 +1,11 @@
 # dependabot-changesets
 
+## 0.1.3
+
+### Patch Changes
+
+- dd0945c: fix detection of grouped PRs with the latest update inclusion of `across 1 directory`
+
 ## 0.1.2
 
 ### Patch Changes
