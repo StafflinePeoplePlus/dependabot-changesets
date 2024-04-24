@@ -1,7 +1,7 @@
 {
 	"name": "dependabot-changesets",
 	"description": "Github action to generate and commit changesets for dependabot PRs, grouped or ungrouped",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"author": "",
 	"private": true,
 	"homepage": "https://github.com/StafflinePeoplePlus/dependabot-changesets",
