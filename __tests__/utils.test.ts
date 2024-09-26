@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 import {
 	extractChangesetUpdate,
+	extractUpdateFromTitle,
 	extractUpdates,
 	generateChangeset,
 	getChangesetName,
@@ -58,6 +59,27 @@ describe('extractChangesetUpdate', () => {
 	it('extracts update from changeset', async () => {
 		const body = await readFile(__dirname + '/example-changeset.txt', 'utf-8');
 		expect(extractChangesetUpdate(body)).toEqual({
+			package: '@typescript-eslint/parser',
+			from: '6.10.0',
+			to: '6.11.0',
+		});
+	});
+});
+
+describe(`extractUpdateFromTitle`, () => {
+	it('extracts update from title', async () => {
+		expect(
+			extractChangesetUpdate('Bump @typescript-eslint/parser from 6.10.0 to 6.11.0'),
+		).toEqual({
+			package: '@typescript-eslint/parser',
+			from: '6.10.0',
+			to: '6.11.0',
+		});
+	});
+	it('extract update from conventional commit title', async () => {
+		expect(
+			extractUpdateFromTitle('chore(deps-dev): bump @typescript-eslint/parser from 6.10.0 to 6.11.0')
+		).toEqual({
 			package: '@typescript-eslint/parser',
 			from: '6.10.0',
 			to: '6.11.0',

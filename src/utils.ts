@@ -34,7 +34,8 @@ export function getChangesetName(pkg: string) {
  */
 export function extractChangesetUpdate(body: string): PackageUpdate | undefined {
 	// e.g. `Bump @typescript-eslint/eslint-plugin from 6.9.1 to 6.10.0`
-	const updateRegex = /Bump (.+?) from (.+?) to (.+?)(?:\n|$)/;
+	//   or `chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.9.1 to 6.10.0`
+	const updateRegex = /[Bb]ump (.+?) from (.+?) to (.+?)(?:\n|$)/;
 	const match = updateRegex.exec(body);
 	if (match === null) return undefined;
 	return {
