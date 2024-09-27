@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 import {
 	extractChangesetUpdate,
+	extractUpdateFromTitle,
 	extractUpdates,
 	generateChangeset,
 	getChangesetName,
@@ -13,10 +14,14 @@ describe('isGroupedPR', () => {
 		expect(isGroupedPR('Bump the all group with 9 updates')).toBe(true);
 		expect(isGroupedPR('Bump the asdfghjkl group with 25 updates')).toBe(true);
 		expect(isGroupedPR('Bump the all group across 1 directory with 19 updates')).toBe(true);
+		expect(isGroupedPR('chore(deps): bump the all group with 3 updates ')).toBe(true);
 	});
 	it('returns false for non grouped PR titles', async () => {
 		expect(isGroupedPR('Some other PR update')).toBe(false);
 		expect(isGroupedPR('Bump marked from 9.1.5 to 9.1.6')).toBe(false);
+		expect(
+			isGroupedPR('chore(deps-dev): bump @typescript-eslint/parser from 6.10.0 to 6.11.0'),
+		).toBe(false);
 	});
 });
 
@@ -58,6 +63,27 @@ describe('extractChangesetUpdate', () => {
 	it('extracts update from changeset', async () => {
 		const body = await readFile(__dirname + '/example-changeset.txt', 'utf-8');
 		expect(extractChangesetUpdate(body)).toEqual({
+			package: '@typescript-eslint/parser',
+			from: '6.10.0',
+			to: '6.11.0',
+		});
+	});
+});
+
+describe(`extractUpdateFromTitle`, () => {
+	it('extracts update from title', async () => {
+		expect(extractChangesetUpdate('Bump @typescript-eslint/parser from 6.10.0 to 6.11.0')).toEqual({
+			package: '@typescript-eslint/parser',
+			from: '6.10.0',
+			to: '6.11.0',
+		});
+	});
+	it('extract update from conventional commit title', async () => {
+		expect(
+			extractUpdateFromTitle(
+				'chore(deps-dev): bump @typescript-eslint/parser from 6.10.0 to 6.11.0',
+			),
+		).toEqual({
 			package: '@typescript-eslint/parser',
 			from: '6.10.0',
 			to: '6.11.0',
