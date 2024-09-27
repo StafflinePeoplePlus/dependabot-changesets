@@ -1,4 +1,4 @@
-const groupedPRRegex = /Bump the .+? group/;
+const groupedPRRegex = /[Bb]ump the .+? group/;
 export function isGroupedPR(title: string) {
 	return groupedPRRegex.test(title);
 }
