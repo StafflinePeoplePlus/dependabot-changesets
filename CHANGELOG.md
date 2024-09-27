@@ -1,5 +1,11 @@
 # dependabot-changesets
 
+## 0.1.4
+
+### Patch Changes
+
+- a96f51b: support conventional commits PR title
+
 ## 0.1.3
 
 ### Patch Changes
