@@ -29839,7 +29839,7 @@ exports.run = run;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.generateChangeset = exports.extractChangesetUpdate = exports.getChangesetName = exports.extractUpdateFromTitle = exports.extractUpdates = exports.isGroupedPR = void 0;
-const groupedPRRegex = /Bump the .+? group/;
+const groupedPRRegex = /[Bb]ump the .+? group/;
 function isGroupedPR(title) {
     return groupedPRRegex.test(title);
 }
@@ -29874,7 +29874,8 @@ exports.getChangesetName = getChangesetName;
  */
 function extractChangesetUpdate(body) {
     // e.g. `Bump @typescript-eslint/eslint-plugin from 6.9.1 to 6.10.0`
-    const updateRegex = /Bump (.+?) from (.+?) to (.+?)(?:\n|$)/;
+    //   or `chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.9.1 to 6.10.0`
+    const updateRegex = /[Bb]ump (.+?) from (.+?) to (.+?)(?:\n|$)/;
     const match = updateRegex.exec(body);
     if (match === null)
         return undefined;
