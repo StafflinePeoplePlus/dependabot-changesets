@@ -1,5 +1,11 @@
 # dependabot-changesets
 
+## 0.1.5
+
+### Patch Changes
+
+- a781155: build fix in https://github.com/StafflinePeoplePlus/dependabot-changesets/pull/9 and update index.js
+
 ## 0.1.4
 
 ### Patch Changes
