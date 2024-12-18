@@ -38,3 +38,17 @@ jobs:
           pr-number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.CHANGESET_GITHUB_TOKEN }}
 ```
+
+## Configuration
+
+| Input | Description | Required | Default |
+|-------|-------------|----------|---------|
+| `owner` | The owner of the repository | Yes | N/A |
+| `repo` | The name of the repository | Yes | N/A |
+| `pr-number` | The number of the PR to process | Yes | N/A |
+| `token` | The GitHub token to use for API requests | Yes | N/A |
+| `package-name` | The name of the package to use in the changeset | No | Same as `repo` |
+| `update-type` | The type of update to use in the changeset | No | `patch` |
+| `git-user` | The user to use for git commits | No | `dependabot[bot]` |
+| `git-email` | The email to use for git commits | No | `49699333+dependabot[bot]@users.noreply.github.com` |
+| `include-changelog` | Whether to include the changelog from Dependabot PRs in the generated changeset | No | `false` |

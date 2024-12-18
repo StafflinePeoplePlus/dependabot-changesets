@@ -3,7 +3,7 @@ export function isGroupedPR(title: string) {
 	return groupedPRRegex.test(title);
 }
 
-export type PackageUpdate = { package: string; from: string; to: string };
+export type PackageUpdate = { package: string; from: string; to: string; changelog?: string };
 export function extractUpdates(body: string): PackageUpdate[] {
 	// e.g. Updates `wrangler` from 3.15.0 to 3.16.0
 	const updateRegex = /(?:\n|^)Updates `(.+?)` from (.+?) to (.+?)(?:\n|$)/g;
@@ -45,6 +45,15 @@ export function extractChangesetUpdate(body: string): PackageUpdate | undefined 
 	};
 }
 
+/**
+ * Extract the changelog from a PR body for a specific package
+ */
+export function extractChangelog(body: string, pkg: string): string | undefined {
+	const groups = Array.from(body.matchAll(/\n?(.+)\n((?:<details>[\s\S]*?<\/details>\n?){2})/g));
+
+	return groups.find((group) => group[1].includes(pkg))?.[2];
+}
+
 export function generateChangeset(packageName: string, updateType: string, update: PackageUpdate) {
 	// e.g.
 	// ---
@@ -57,5 +66,6 @@ ${JSON.stringify(packageName)}: ${updateType}
 ---
 
 Bump ${update.package} from ${update.from} to ${update.to}
+${update.changelog ? `\n${update.changelog}` : ''}
 `;
 }

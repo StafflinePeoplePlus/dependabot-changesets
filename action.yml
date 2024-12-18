@@ -36,6 +36,10 @@ inputs:
     description: 'Email to use for git commits, defaults to "49699333+dependabot[bot]@users.noreply.github.com"'
     required: false
     default: 49699333+dependabot[bot]@users.noreply.github.com
+  include-changelog:
+    description: 'Whether to include the changelog from Dependabot PRs in the generated changeset'
+    required: false
+    default: 'false'
 
 runs:
   using: node20
